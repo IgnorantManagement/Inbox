@@ -41,18 +41,18 @@
     <h1>SECURE MAIL CLIENT</h1>
     <p>Unauthorized access is strictly prohibited.</p>
     
-    <div id="email-container">
+    <div id="passwordScreen">
+        <p>Enter access code:</p>
+        <input type="text" id="passwordInput" autofocus>
+        <button onclick="checkPassword()">Submit</button>
+    </div>
+    
+    <div id="email-container" class="hidden">
         <h2>Inbox</h2>
         <div class="email-item" onclick="openEmail(0)">[URGENT] Protocol Breach Detected</div>
         <div class="email-item" onclick="openEmail(1)">Re: Inquiry About Missing Personnel</div>
         <div class="email-item" onclick="openEmail(2)">System Update: Do Not Restart</div>
         <div id="lockedEmail" class="email-item hidden" onclick="openEmail(3)">***** Secured Message *****</div>
-    </div>
-    
-    <div id="passwordScreen">
-        <p>Enter access code:</p>
-        <input type="text" id="passwordInput" autofocus>
-        <button onclick="checkPassword()">Submit</button>
     </div>
     
     <div id="email-content" class="hidden">
@@ -98,6 +98,7 @@
             if (input === "sgree017") {
                 document.getElementById("lockedEmail").classList.remove("hidden");
                 document.getElementById("passwordScreen").classList.add("hidden");
+                document.getElementById("email-container").classList.remove("hidden");
                 alert("Access granted. Secured message unlocked.");
             } else {
                 alert("Access denied.");
